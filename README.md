@@ -1,6 +1,6 @@
 # IMG420-GroceryRush
 
-A simple top-down game about retrieving groceries for your mom.
+A simple top-down memory game about retrieving groceries for your mom.
 
 Retrieve the grocery items from the shelves within the time limit
 
