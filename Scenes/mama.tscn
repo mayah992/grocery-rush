@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://0j2lgyp5c8si"]
+
+[ext_resource type="Texture2D" uid="uid://bm8lpw1nb38o0" path="res://Assets/Mama/Mama.png" id="1_06tie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed50c"]
+size = Vector2(13, 31)
+
+[sub_resource type="Animation" id="Animation_q03sa"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_xd2nv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sdey"]
+_data = {
+&"RESET": SubResource("Animation_xd2nv"),
+&"idle": SubResource("Animation_q03sa")
+}
+
+[node name="Mama" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_ed50c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_06tie")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8sdey")
+}
+autoplay = "idle"

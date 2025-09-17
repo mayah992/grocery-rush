@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://btxn1ofnrwo8c"]
+
+[ext_resource type="Script" uid="uid://cgns7ewokx5vs" path="res://Scripts/lose.gd" id="1_g0cl2"]
+[ext_resource type="Texture2D" uid="uid://brw21w12uf8ah" path="res://Assets/TextBox.png" id="2_04a82"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgh6o"]
+texture = ExtResource("2_04a82")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[node name="lose" type="Node2D"]
+script = ExtResource("1_g0cl2")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 322.0
+offset_bottom = 178.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qgh6o")
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Too late!
+Returning to main menu in"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 135.0
+offset_top = 116.0
+offset_right = 180.0
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Timer"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,250 @@
+[gd_scene load_steps=19 format=3 uid="uid://cjpgihqjgh7y7"]
+
+[ext_resource type="Script" uid="uid://qykj4u44wsak" path="res://Player/Sprite/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://btw2qg00vf0ad" path="res://Player/Sprite/Player.PNG" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://dpgvwcvtb4caq" path="res://Player/Sprite/player_state_machine.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cs5p8qof772fx" path="res://Player/Sprite/state_idle.gd" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://xgj1yr6envd1" path="res://Player/Sprite/state_walk.gd" id="5_fkybt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkybt"]
+radius = 2.01821
+height = 11.9608
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gssft"]
+radius = 11.0
+
+[sub_resource type="Animation" id="Animation_6t5aa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_cvnsp"]
+resource_name = "idle_down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_x3wgy"]
+resource_name = "idle_left"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+resource_name = "idle_right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+resource_name = "idle_up"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_3smsa"]
+resource_name = "walk_down"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 3]
+}
+
+[sub_resource type="Animation" id="Animation_tx1dd"]
+resource_name = "walk_left"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [14, 12, 15]
+}
+
+[sub_resource type="Animation" id="Animation_f1ek2"]
+resource_name = "walk_right"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [10, 8, 11]
+}
+
+[sub_resource type="Animation" id="Animation_8erm5"]
+resource_name = "walk_down_2"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 5, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gymyn"]
+_data = {
+&"RESET": SubResource("Animation_6t5aa"),
+&"idle_down": SubResource("Animation_cvnsp"),
+&"idle_left": SubResource("Animation_x3wgy"),
+&"idle_right": SubResource("Animation_fkybt"),
+&"idle_up": SubResource("Animation_vgqql"),
+&"walk_down": SubResource("Animation_3smsa"),
+&"walk_left": SubResource("Animation_tx1dd"),
+&"walk_right": SubResource("Animation_f1ek2"),
+&"walk_up": SubResource("Animation_8erm5")
+}
+
+[sub_resource type="GDScript" id="GDScript_fkybt"]
+script/source = "class_name State_Walk extends State
+
+@export var move_speed : float = 50.0
+
+@onready var idle : State = $\"../Sprint\"
+
+# what happens when the player enters this state
+func Enter() -> void:
+	player.UpdateAnimation(\"walk\")
+	pass
+	
+func Exit() -> void:
+	pass
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func Process(_delta: float) -> State:
+	if player.direction == Vector2.ZERO:
+		return idle
+	
+	player.velocity = player.direction * move_speed
+	
+	if player.SetDirection():
+		player.UpdateAnimation(\"walk\")
+		
+	return null
+	
+func Physics(_delta : float) -> State:
+	return null
+	
+func HandleInput(_event: InputEvent) -> State:
+	return null
+"
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 5
+script = ExtResource("1_cvnsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v0iea")
+hframes = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+rotation = 1.58935
+shape = SubResource("CapsuleShape2D_fkybt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gssft")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gymyn")
+}
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_6t5aa")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_vgqql")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("5_fkybt")
+move_speed = 50.0
+
+[node name="Sprint" type="Node" parent="StateMachine"]
+script = SubResource("GDScript_fkybt")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

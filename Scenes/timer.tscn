@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://ecutqf3508a3"]
+
+[ext_resource type="Script" uid="uid://c8w4jmom27nwo" path="res://Scripts/timer.gd" id="1_pvhx5"]
+
+[node name="Timer" type="Node"]
+script = ExtResource("1_pvhx5")
+
+[node name="Label" type="Label" parent="."]
+z_index = 3
+texture_filter = 1
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 49.0
+offset_bottom = 27.0
+text = "timer"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
