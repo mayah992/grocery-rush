@@ -1,6 +1,6 @@
-# IMG420-GroceryRush
+# GroceryRush
 
-A simple top-down memory game about retrieving groceries for your mom.
+A simple top-down memory game created in Godot about retrieving groceries for your mom. Created for the class IMG420 - 2D Game Engines
 
 Retrieve the grocery items from the shelves within the time limit
 
